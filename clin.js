@@ -1,4 +1,9 @@
 
+/* clin.js from github.com/f03lipe/clin
+* Authored by Felipe Aragão
+* Licensed under MIT License
+*/
+
 (function ($) {
 	"use strict";
 

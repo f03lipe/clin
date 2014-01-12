@@ -19,11 +19,11 @@
 		$el.html('').addClass('active');
 
 		var opts = {
-			debug: (opt && opt.debug) || false,
-			charDelay: (opt && opt.dd) || 50,		// character delay
-			wsDelay: (opt && opt.dd) || 100,		// whitespace char delay
-			prePutD: (opt && opt.prePutD) || 400,	// pre put() delay
-			posPutD: (opt && opt.posPutD) || 400,	// pos put() delay
+			debug: (opt && opt.debug) 		|| false,
+			charDelay: (opt && opt.dd) 	 	|| 50,
+			wsDelay: (opt && opt.dd) 		|| 100,		// whitespace char delay
+			prePutD: (opt && opt.prePutD) 	|| 400,	// pre put() delay
+			posPutD: (opt && opt.posPutD) 	|| 400,	// pos put() delay
 		};
 
 		var debug = function () {
@@ -101,7 +101,11 @@
 							Queue.prepend(methods.wait)(opts.posPutD);
 							return;
 						}
-						var delay = (text[i]===' '&&opts.wsDelay)||opts.charDelay;
+
+						var delay = opts.charDelay;
+						if (text[i] === ' ')
+							delay = opts.wsDelay;
+						delay = parseInt($(textnode).parent().data('char-delay'));
 						setTimeout(thisFn, delay);
 					})();
 				}, opts.prePutD);

@@ -1,6 +1,6 @@
-# cli
+# clin
 
-This undocumented script allows for a cli-like interface using HTML5.
+Create cli-like animations using HTML5.
 
 ## Basic usage
 
@@ -20,5 +20,17 @@ $(document).ready(function(){
 
 Oh, don't forget to add the CSS file, in order to get the blinking cursor functionality.
 
+
+## Customize animations
+
+Use elements datasets to customize animations.
+
+- `data-char-delay`: delay between output of individual characters (in milliseconds)
+- `data-cli="fade"`: simply fadeIn element, don't use clin
+
 ## TODOs:
 - Create stylesheet with terminal styles.
+- Implement hierarchical dataset binding.
+
+### License
+MIT

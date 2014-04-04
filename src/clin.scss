@@ -1,0 +1,73 @@
+/* clin.css from github.com/f03lipe/clin
+ * Authored by Felipe Aragão
+ * Licensed under MIT License
+ */
+
+$color-pre: #FFF;
+$color-pre-background: #333;
+$font-family-mono: "PT Mono", "Iconsolas", "Monaco", monospace;
+
+.cli-wrapper {
+	display: none;
+  visibility: hidden;
+  &.active {
+    display: block;
+    visibility: visible;
+  }
+}
+
+.cli-wrapper .cli-content,
+.cli-wrapper [data-cli]:not(.cli-line) {
+	display: none;
+}
+
+.cli-wrapper .blink-cursor:after {
+  opacity: 0;
+	-webkit-animation: blink-cursor 1s infinite;
+  animation: blink-cursor 1s infinite;
+  content: "";
+  border-right: 1ex solid;
+}
+
+// Animations
+
+@-webkit-keyframes blink-cursor {
+  50% { opacity: 1; }
+}
+
+@keyframes blink-cursor {
+	50% { opacity: 1; }
+}
+
+// Theme
+
+.terminal {
+  background: $color-pre-background;
+  color: $color-pre;
+  padding: 1.5em;
+  min-height: 10em;
+  font-family: $font-family-mono;
+  font-weight: 400;
+  border-top: 2.5em solid lighten($color-pre-background, 20%);
+  border-radius: 4px;
+  font-size: 0.8em;
+  overflow-x: scroll;
+  line-height: 1.5;
+  code {
+    font-family: $font-family-mono;
+    color: $color-pre;
+    background: transparent;
+    padding: 0;
+    display: block;
+    &:before {
+      content: "$ ";
+      color: lighten($color-pre-background, 20%);
+    }
+  }
+}
+
+@media (min-width: 30em) {
+  .terminal {
+    font-size: 1em;
+  }
+}

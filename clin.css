@@ -1,36 +1,58 @@
-
-/* clin.css from github.com/f03lipe/clin
-* Authored by Felipe Aragão
-* Licensed under MIT License
-*/
-
 .cli-wrapper {
-	display: none;
+    display: none;
+    visibility: hidden;
 }
-	
+
 .cli-wrapper.active {
-	display: block;
+    display: block;
+    visibility: visible;
 }
 
-.cli-wrapper .blink-cursor::after {
-	opacity: 0;
--webkit-animation: blink-cursor 1s infinite;
--moz-animation: all .4s ease-in-out;
--ms-animation: all .4s ease-in-out;
- -o-animation: all .4s ease-in-out;
-	animation: blink-cursor 1s infinite;
-	content: "|";
-}
-
-.cli-wrapper .cli-content, 
-.cli-wrapper [data-cli]:not(.cli-line) {
-	display: none;
-}
-
-@keyframes blink-cursor {
-	50% { opacity: 1; }
+.cli-wrapper .cli-content,
+.cli-wrapper [data-cli]:not(.cli-line) { display: none }
+.cli-wrapper .blink-cursor:after {
+    opacity: 0;
+    -webkit-animation: blink-cursor 1s infinite;
+    animation: blink-cursor 1s infinite;
+    content: "";
+    border-right: 1ex solid;
 }
 
 @-webkit-keyframes blink-cursor {
-	50% { opacity: 1; }
+    50% { opacity: 1 }
+}
+
+@keyframes blink-cursor {
+    50% { opacity: 1 }
+}
+
+.terminal {
+    background: #333;
+    color: #FFF;
+    padding: 1.5em;
+    min-height: 10em;
+    font-family: "PT Mono","Iconsolas","Monaco",monospace;
+    font-weight: 400;
+    border-top: 2.5em solid #666666;
+    border-radius: 4px;
+    font-size: 0.8em;
+    overflow-x: scroll;
+    line-height: 1.5;
+}
+
+.terminal code {
+    font-family: "PT Mono","Iconsolas","Monaco",monospace;
+    color: #FFF;
+    background: transparent;
+    padding: 0;
+    display: block;
+}
+
+.terminal code:before {
+    content: "$ ";
+    color: #666666;
+}
+
+@media (min-width: 30em) {
+    .terminal { font-size: 1em }
 }
